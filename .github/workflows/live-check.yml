@@ -1,0 +1,49 @@
+name: Verify published Orbu Action
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['demo/**', '.github/workflows/live-check.yml']
+  pull_request:
+    paths: ['demo/**']
+permissions:
+  contents: read
+  pull-requests: write
+concurrency:
+  group: orbu-check-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  review:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+          path: head
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        if: github.event_name == 'pull_request'
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+          path: base
+      - name: Run published Action
+        id: orbu
+        uses: juancarlosmnavas/orbu-agent-review@29c4b374095bfad0cc9424d08c31ab2545cb0925
+        with:
+          api-key: ${{ secrets.ORBU_ACTION_TEST_KEY }}
+          project: orbu-action-e2e
+          path: head/demo
+          baseline-path: ${{ github.event_name == 'pull_request' && 'base/demo' || '' }}
+          analyzer: static
+          locale: es
+          store: 'true'
+          jobs: 'true'
+          fail-on: none
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        if: always() && steps.orbu.outputs.report-path != ''
+        with:
+          name: orbu-agent-report
+          path: ${{ steps.orbu.outputs.report-path }}
+          retention-days: 1

@@ -1,0 +1,302 @@
+{
+ "permissions": {
+  "propose_payments": {
+   "en": "Propose payments",
+   "es": "Proponer pagos"
+  },
+  "initiate_payments": {
+   "en": "Initiate payments",
+   "es": "Iniciar pagos"
+  },
+  "complete_payments": {
+   "en": "Complete payments",
+   "es": "Completar pagos"
+  },
+  "real_card": {
+   "en": "Access a real card",
+   "es": "Acceder a una tarjeta real"
+  },
+  "bank_transfers": {
+   "en": "Bank transfers",
+   "es": "Transferencias bancarias"
+  },
+  "refunds": {
+   "en": "Issue refunds",
+   "es": "Hacer devoluciones"
+  },
+  "purchases": {
+   "en": "Make purchases",
+   "es": "Realizar compras"
+  },
+  "treasury": {
+   "en": "Treasury operations",
+   "es": "Operaciones de tesorería"
+  },
+  "fx": {
+   "en": "Foreign exchange",
+   "es": "Cambio de divisas"
+  },
+  "beneficiaries": {
+   "en": "Change beneficiaries",
+   "es": "Modificar beneficiarios"
+  },
+  "repo_read": {
+   "en": "Read repositories",
+   "es": "Leer repositorios"
+  },
+  "repo_write": {
+   "en": "Write to repositories",
+   "es": "Escribir en repositorios"
+  },
+  "create_pr": {
+   "en": "Create pull requests",
+   "es": "Crear pull requests"
+  },
+  "modify_ci": {
+   "en": "Modify CI",
+   "es": "Modificar CI"
+  },
+  "trigger_ci": {
+   "en": "Trigger CI",
+   "es": "Iniciar CI"
+  },
+  "abort_ci": {
+   "en": "Abort CI",
+   "es": "Detener CI"
+  },
+  "replay_ci": {
+   "en": "Replay CI",
+   "es": "Repetir CI"
+  },
+  "choose_tests": {
+   "en": "Choose tests",
+   "es": "Elegir pruebas"
+  },
+  "skip_tests": {
+   "en": "Skip tests",
+   "es": "Omitir pruebas"
+  },
+  "merge": {
+   "en": "Merge changes",
+   "es": "Integrar cambios"
+  },
+  "staging_deploy": {
+   "en": "Deploy to staging",
+   "es": "Desplegar en staging"
+  },
+  "production_deploy": {
+   "en": "Deploy to production",
+   "es": "Desplegar en producción"
+  },
+  "rollback": {
+   "en": "Run rollback",
+   "es": "Ejecutar rollback"
+  },
+  "feature_flags": {
+   "en": "Change feature flags",
+   "es": "Cambiar feature flags"
+  },
+  "production_database": {
+   "en": "Production database access",
+   "es": "Acceder a la base de producción"
+  },
+  "migrations": {
+   "en": "Run migrations",
+   "es": "Ejecutar migraciones"
+  },
+  "secrets_access": {
+   "en": "Access secrets (declare only)",
+   "es": "Acceder a secretos (solo declarar)"
+  },
+  "credentials": {
+   "en": "Manage credentials",
+   "es": "Gestionar credenciales"
+  },
+  "cloud": {
+   "en": "Manage cloud infrastructure",
+   "es": "Gestionar infraestructura cloud"
+  },
+  "modify_safeguards": {
+   "en": "Modify its own safeguards",
+   "es": "Modificar sus propios controles"
+  },
+  "modify_permissions": {
+   "en": "Change permissions",
+   "es": "Cambiar permisos"
+  },
+  "email": {
+   "en": "Read email",
+   "es": "Leer correo"
+  },
+  "calendar": {
+   "en": "Manage calendar",
+   "es": "Gestionar calendario"
+  },
+  "browser": {
+   "en": "Use browser",
+   "es": "Usar navegador"
+  },
+  "files": {
+   "en": "Modify files or data",
+   "es": "Modificar archivos o datos"
+  },
+  "cloud_storage": {
+   "en": "Cloud storage access",
+   "es": "Acceder a almacenamiento cloud"
+  },
+  "messaging": {
+   "en": "Send messages",
+   "es": "Enviar mensajes"
+  },
+  "banking": {
+   "en": "Banking access",
+   "es": "Acceso bancario"
+  },
+  "smart_home": {
+   "en": "Control smart home",
+   "es": "Controlar hogar inteligente"
+  },
+  "subscriptions": {
+   "en": "Manage subscriptions",
+   "es": "Gestionar suscripciones"
+  },
+  "bookings": {
+   "en": "Make bookings",
+   "es": "Hacer reservas"
+  },
+  "personal_data": {
+   "en": "Access personal information",
+   "es": "Acceder a información personal"
+  },
+  "send_messages": {
+   "en": "Send customer messages",
+   "es": "Enviar mensajes a clientes"
+  },
+  "publish": {
+   "en": "Publish content",
+   "es": "Publicar contenido"
+  },
+  "negotiate": {
+   "en": "Negotiate",
+   "es": "Negociar"
+  },
+  "discounts": {
+   "en": "Offer discounts",
+   "es": "Ofrecer descuentos"
+  },
+  "prices": {
+   "en": "Change prices",
+   "es": "Modificar precios"
+  },
+  "accept_terms": {
+   "en": "Accept terms",
+   "es": "Aceptar condiciones"
+  },
+  "sign": {
+   "en": "Sign contracts",
+   "es": "Firmar contratos"
+  },
+  "commitments": {
+   "en": "Create contractual commitments",
+   "es": "Crear compromisos contractuales"
+  },
+  "confidential_data": {
+   "en": "Access confidential information",
+   "es": "Acceder a información confidencial"
+  },
+  "control_agents": {
+   "en": "Control other agents",
+   "es": "Controlar otros agentes"
+  },
+  "physical_actuation": {
+   "en": "Control physical systems",
+   "es": "Controlar sistemas físicos"
+  }
+ },
+ "controls": {
+  "human_approval": {
+   "en": "Human approval per action",
+   "es": "Aprobación humana por acción"
+  },
+  "spending_limits": {
+   "en": "Enforced spending limits",
+   "es": "Límites de gasto aplicados"
+  },
+  "branch_protection": {
+   "en": "Branch protection",
+   "es": "Protección de ramas"
+  },
+  "mandatory_tests": {
+   "en": "Mandatory, non-skippable tests",
+   "es": "Pruebas obligatorias que no puede omitir"
+  },
+  "rollback": {
+   "en": "Automatic rollback",
+   "es": "Rollback automático"
+  },
+  "kill_switch": {
+   "en": "Kill switch",
+   "es": "Parada de emergencia"
+  },
+  "logs": {
+   "en": "Audit logs",
+   "es": "Registros de auditoría"
+  },
+  "temporary_credentials": {
+   "en": "Temporary credentials",
+   "es": "Credenciales temporales"
+  },
+  "oidc": {
+   "en": "OIDC",
+   "es": "OIDC"
+  },
+  "sandbox": {
+   "en": "Sandbox",
+   "es": "Sandbox"
+  },
+  "segregation": {
+   "en": "Segregation of duties",
+   "es": "Separación de funciones"
+  },
+  "merchant_lock": {
+   "en": "Merchant locking",
+   "es": "Bloqueo por comercio"
+  },
+  "amount_lock": {
+   "en": "Amount locking",
+   "es": "Bloqueo por importe"
+  },
+  "single_use": {
+   "en": "Single-use credentials",
+   "es": "Credenciales de un solo uso"
+  },
+  "human_merge": {
+   "en": "Human approval before merge",
+   "es": "Aprobación humana antes del merge"
+  },
+  "human_production": {
+   "en": "Human approval before production",
+   "es": "Aprobación humana antes de producción"
+  },
+  "limited_blast_radius": {
+   "en": "Limited blast radius",
+   "es": "Alcance limitado de los cambios"
+  },
+  "immutable_workflows": {
+   "en": "Immutable security workflows",
+   "es": "Flujos de seguridad inmutables"
+  },
+  "input_validation": {
+   "en": "Untrusted input isolation",
+   "es": "Aislamiento de instrucciones externas"
+  },
+  "tool_allowlist": {
+   "en": "Tool allowlist",
+   "es": "Lista de herramientas permitidas"
+  },
+  "egress_filter": {
+   "en": "Outbound data restrictions",
+   "es": "Restricciones de salida de datos"
+  }
+ }
+}

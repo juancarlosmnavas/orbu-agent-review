@@ -1,0 +1,62 @@
+name: Orbu agent review
+description: Find the AI agents in your code, score their risk and review every pull request, without uploading source code.
+author: Orbu
+branding:
+  icon: shield
+  color: blue
+inputs:
+  api-key:
+    description: Orbu API key. Keep it in GitHub Actions secrets.
+    required: true
+  api-url:
+    description: Orbu service origin.
+    default: https://orbu--orbu-agents-2026.europe-west4.hosted.app
+  path:
+    description: Repository directory to scan. No project code is executed.
+    default: .
+  baseline-path:
+    description: Optional checkout of the PR base for a direct before/after comparison.
+    default: ''
+  project:
+    description: Stable project slug. Defaults to owner.repository.
+    default: ''
+  locale:
+    description: Report language, en or es.
+    default: en
+  usage-context:
+    description: business, provider or personal.
+    default: business
+  analyzer:
+    description: auto, static or llm. llm requires a configured Orbu server model.
+    default: static
+  store:
+    description: Save the canonical inventory. Always disabled for pull requests.
+    default: 'false'
+  include-tests:
+    description: Include test and evaluation entry points.
+    default: 'false'
+  fail-on:
+    description: none, high-risk or regression. Errors always fail.
+    default: none
+  jobs:
+    description: Take discovery and re-evaluation jobs requested from Orbu. Needs a credential bound to this project. Only on the default branch.
+    default: 'true'
+  comment:
+    description: On pull requests, leave one comment with what the change does to the agents, kept up to date. Needs pull-requests write permission.
+    default: 'true'
+  github-token:
+    description: Token used to write the pull request comment.
+    default: ${{ github.token }}
+  risk-threshold:
+    description: Integer from 1 to 100 for high-risk policy.
+    default: '80'
+outputs:
+  report-path:
+    description: Directory containing JSON, Markdown, HTML and the change summary.
+  agents:
+    description: Number of detected configurations.
+  policy-failed:
+    description: Whether the selected risk policy failed.
+runs:
+  using: node24
+  main: index.mjs

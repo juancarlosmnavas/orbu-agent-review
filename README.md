@@ -18,11 +18,11 @@ Reads JavaScript, TypeScript and Python in depth, and Go, Java, Kotlin, Swift, D
 3. Copy [`examples/orbu-agents.yml`](examples/orbu-agents.yml) to `.github/workflows/` and pin this action to a full commit SHA.
 
 ```yaml
-- uses: actions/checkout@v6
+- uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
   with:
     persist-credentials: false
     path: head
-- uses: juancarlosmnavas/orbu-agent-review@FULL_COMMIT_SHA
+- uses: juancarlosmnavas/orbu-agent-review@29c4b374095bfad0cc9424d08c31ab2545cb0925
   with:
     api-key: ${{ secrets.ORBU_API_KEY }}
     path: head

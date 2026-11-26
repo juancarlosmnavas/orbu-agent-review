@@ -1,0 +1,55 @@
+name: Orbu agent review
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # Picks up "Discover agents" and "Re-evaluate" requests from Orbu. Runs without a pending job exit in seconds.
+  schedule:
+    - cron: '*/30 * * * *'
+
+permissions:
+  contents: read
+  # Lets Orbu leave and update its review comment on pull requests.
+  pull-requests: write
+
+concurrency:
+  group: orbu-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  scan:
+    # Forks do not receive repository secrets. Never change this to pull_request_target.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          path: head
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        if: github.event_name == 'pull_request'
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+          path: base
+            - name: Review agents
+        id: orbu
+        uses: juancarlosmnavas/orbu-agent-review@29c4b374095bfad0cc9424d08c31ab2545cb0925 # pinned published Action
+        with:
+          api-key: ${{ secrets.ORBU_API_KEY }}
+          api-url: ${{ vars.ORBU_API_URL || 'https://orbu--orbu-agents-2026.europe-west4.hosted.app' }}
+          path: head
+          baseline-path: ${{ github.event_name == 'pull_request' && 'base' || '' }}
+          locale: es
+          analyzer: static
+          store: ${{ github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+          jobs: 'true'
+          fail-on: none
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always() && steps.orbu.outputs.report-path != ''
+        with:
+          name: orbu-agent-report
+          path: ${{ steps.orbu.outputs.report-path }}
+          retention-days: 14
